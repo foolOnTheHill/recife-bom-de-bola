@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="pt-br">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="App para fácil visualização das informações do Recife Bom de Bola.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
+
+  <title>Recife Bom de Bola!</title>
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-blue.min.css">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom-styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Ramda, for easy data manipulation -->
+  <script src="js/ramda.min.js"></script>
+
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+</head>
+
+<body>
+
+  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header mdl-color--indigo-white mdl-color--white-indigo-100 mdl-color-text--white-600">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title" id="viewName">Recife Bom de Bola</span>
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="search" />
+            <label class="mdl-textfield__label" for="search">Digite a sua pesquisa</label>
+          </div>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+          <li class="mdl-menu__item"><a href="https://recifebomdebola.wordpress.com/">Site Oficial <b>Recife Bom de Bola</b></a></li>
+          <li class="mdl-menu__item">GitHub</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="demo-drawer mdl-layout__drawer mdl-color--white mdl-color-text--white">
+
+      <header class="demo-drawer-header ball-background">
+        <div class="demo-avatar-dropdown">
+          <div class="mdl-layout-spacer"></div>
+        </div>
+      </header>
+
+      <nav class="demo-navigation mdl-navigation mdl-color--indigo-500">
+        <a id="categoriasBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">assignment</i>Categorias</a>
+        <a id="equipesBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">group</i>Equipes</a>
+        <a id="jogadoresBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">person</i>Jogadores</a>
+        <a id="camposBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">place</i>Campos</a>
+        <div class="mdl-layout-spacer"></div>
+        <a id="classificacaoBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">assessment</i>Classificação</a>
+        <a id="tabelasBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">today</i>Tabelas</a>
+        <a id="regulamentoBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">description</i>Regulamento</a>
+        <div class="mdl-layout-spacer"></div>
+        <a id="ajudaBtn" class="mdl-navigation__link" href="#"><i class="mdl-color-text--indigo-grey-400 material-icons" role="presentation">help_outline</i>Ajuda</a>
+      </nav>
+    </div>
+
+    <main class="mdl-layout__content mdl-color--grey-100">
+      <div class="mdl-grid demo-content" id="mainContent">
+        <div id="innerContent" class="center-div">
+          <div class="center-div">
+            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script type="text/jsx;harmony=true" src="js/components.js"></script>
+  <script type="text/jsx;harmony=true" src="js/app.js"></script>
+</body>
+
+</html>

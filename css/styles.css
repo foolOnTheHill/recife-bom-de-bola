@@ -1,0 +1,29 @@
+.ball-background {
+  background-image: url('../img/ball-background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+a {
+  color: rgba(0,0,0,.87);
+  text-decoration: none;
+  outline: none;
+}
+
+.center-div {
+  margin: 0 auto;
+  width: 90%;
+  margin-top: 2%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.to-the-right {
+  float: right;
+}
+
+.outerContent {
+  height: 900px;
+}
