@@ -11,15 +11,11 @@ $(document).ready(function() {
     $('#innerContent').html('<div class="center-div"><div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div></div>');
   }
 
-  setLoadSprites();
-
   // Is slow this way :(. TODO: Lazy loading
   var equipes = get(createQuery('equipes', [], [], false)).data;
   var jogadores = get(createQuery('jogadores', [], [], false)).data;
   var campos = get(createQuery('campos', [], [], false)).data;
   var categorias = getCategorias(equipes);
-
-  $('#innerContent').html('');
 
   // Changes the highlighting of the menu
   $('nav a').click(function() {
@@ -92,7 +88,8 @@ $(document).ready(function() {
   $('#ajudaBtn').click(function() {
     hideAllSearchBoxes();
 
-    $('#viewName').html('Ajuda');
+    $('#viewName').html('Sobre');
+    $('#innerContent').html('<h4>Criado como exercício para o aprendizado de <a href="https://facebook.github.io/react/">React</a>, elementos de <a href="http://www.getmdl.io/">Material Design</a> e utilização da API de <a href="http://dados.recife.pe.gov.br/">Dados Abertos</a> da Prefeitura do Recife. </h4> <h4>Veja o código no <a href="https://github.com/foolOnTheHill/recife-bom-de-bola">GitHub</a>.</h4>');
   });
 
 });
