@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="css/custom-styles.css">
   <link rel="stylesheet" href="css/styles.css">
 
+  <!-- Google Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
   <!-- Ramda, for easy data manipulation -->
   <script src="js/ramda.min.js"></script>
 
@@ -41,21 +44,53 @@
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title" id="viewName">Recife Bom de Bola</span>
         <div class="mdl-layout-spacer"></div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-          <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+
+        <div id="modalidadesSearchBox" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable hidden">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="modalidadeSearch">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input" type="text" id="search" />
+            <input class="mdl-textfield__input" type="text" id="modalidadeSearch" />
             <label class="mdl-textfield__label" for="search">Digite a sua pesquisa</label>
           </div>
         </div>
+
+        <div id="equipesSearchBox" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable hidden">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="equipeSearch">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="equipeSearch" />
+            <label class="mdl-textfield__label" for="search">Digite a sua pesquisa</label>
+          </div>
+        </div>
+
+        <div id="jogadoresSearchBox" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable hidden">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="jogadoresSearch">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="jogadoresSearch" />
+            <label class="mdl-textfield__label" for="search">Digite a sua pesquisa</label>
+          </div>
+        </div>
+
+        <div id="camposSearchBox" class="mdl-textfield mdl-js-textfield mdl-textfield--expandable hidden">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="camposSearch">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="camposSearch" />
+            <label class="mdl-textfield__label" for="search">Digite a sua pesquisa</label>
+          </div>
+        </div>
+
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
           <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
           <li class="mdl-menu__item"><a href="https://recifebomdebola.wordpress.com/">Site Oficial <b>Recife Bom de Bola</b></a></li>
-          <li class="mdl-menu__item">GitHub</li>
+          <li class="mdl-menu__item"><a href="https://github.com/foolOnTheHill/recife-bom-de-bola">GitHub</a></li>
         </ul>
       </div>
     </header>

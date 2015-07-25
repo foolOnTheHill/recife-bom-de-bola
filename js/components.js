@@ -11,6 +11,69 @@ var searchFilter = function(searchString) {
   };
 };
 
+var CampoView = React.createClass({
+  render: function() {
+    var ui = (
+      <div className="mdl-card mdl-shadow--2dp demo-card-wide center-div">
+        <div className="mdl-card__title">
+          <h2 className="mdl-card__title-text"> { formatString(this.props.campo.nome) } </h2>
+        </div>
+        <div className="mdl-card__supporting-text">
+          <p>
+            <b>Endereço:</b> { this.props.campo.enderco }. <br />
+            <b>É privado?</b> { formatString(this.props.campo.privado) }.
+          </p>
+        </div>
+        <div className="mdl-card__actions mdl-card--border">
+          <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Visualizar no Mapa
+          </a>
+        </div>
+        <div className="mdl-card__menu">
+          <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i className="material-icons">directions</i>
+          </button>
+        </div>
+      </div>
+    );
+
+    return ui;
+  }
+});
+
+var CamposList = React.createClass({
+  getInitialState: function() {
+    return {
+      search: ''
+    };
+  },
+  componentWillMount: function() {
+    document.getElementById('camposSearch').addEventListener('change', this.search);
+  },
+  componentWillUnmount: function() {
+    document.getElementById('camposSearch').removeEventListener('change', this.search);
+  },
+  search: function(e) {
+    this.setState({
+      search: e.target.value.toLowerCase()
+    });
+  },
+  render: function() {
+    var cp = this.props.campos.filter(searchFilter(this.state.search)).map(function(c) {
+      return <CampoView campo={ c } />;
+    });
+
+    var ui = (
+      <div className="center-div">
+        { cp }
+      </div>
+    );
+
+    return ui;
+  }
+});
+exports.CamposList = CamposList;
+
 var JogadorView = React.createClass({
   render: function() {
     // Computes the age of the player

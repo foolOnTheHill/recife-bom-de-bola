@@ -27,3 +27,7 @@ a {
 .outerContent {
   height: 900px;
 }
+
+.hidden {
+  display: none;
+}
