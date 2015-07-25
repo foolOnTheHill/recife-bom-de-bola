@@ -31,3 +31,9 @@ a {
 .hidden {
   display: none;
 }
+
+.map-canvas {
+  height: 220px;
+  margin: 0;
+  padding: 0;
+}

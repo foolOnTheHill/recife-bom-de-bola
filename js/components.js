@@ -11,8 +11,49 @@ var searchFilter = function(searchString) {
   };
 };
 
-var CampoView = React.createClass({
+var MapView = React.createClass({
+  componentDidMount: function() {
+    var latLng = new google.maps.LatLng(this.props.campo.latitude, this.props.campo.longitude);
+    var map = new google.maps.Map(document.getElementById('map-canvas' + this.props.campo._id), {
+      zoom: 15,
+      center: latLng
+    });
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title: formatString(this.props.campo.nome)
+    });
+  },
   render: function() {
+    var ui = <div id={ 'map-canvas' + this.props.campo._id } className="map-canvas"></div>
+    return ui;
+  }
+});
+
+var CampoView = React.createClass({
+  getInitialState: function() {
+    return {
+      active: false
+    };
+  },
+  handleClick: function() {
+    this.setState({
+      active: !this.state.active
+    });
+  },
+  render: function() {
+    var instr = this.state.active ? 'Ocultar Mapa' : 'Visualizar no Mapa';
+
+    var btnToMap = (
+      <a onClick={ this.handleClick } className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        {{ instr }}
+      </a>
+    );
+
+    var map = <MapView campo={this.props.campo} />;
+
+    var additional = this.state.active ? map : '';
+
     var ui = (
       <div className="mdl-card mdl-shadow--2dp demo-card-wide center-div">
         <div className="mdl-card__title">
@@ -25,14 +66,8 @@ var CampoView = React.createClass({
           </p>
         </div>
         <div className="mdl-card__actions mdl-card--border">
-          <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Visualizar no Mapa
-          </a>
-        </div>
-        <div className="mdl-card__menu">
-          <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i className="material-icons">directions</i>
-          </button>
+          { btnToMap }
+          { additional }
         </div>
       </div>
     );
