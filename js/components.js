@@ -1,5 +1,16 @@
 ;(function(exports) {
 
+var searchFilter = function(searchString) {
+  return function(obj) {
+    for (att in obj) {
+      if (obj[att].toString().toLowerCase().match(searchString)) {
+        return true;
+      }
+    }
+    return false;
+  };
+};
+
 var JogadorView = React.createClass({
   render: function() {
     // Computes the age of the player
@@ -64,9 +75,25 @@ var JogadorCard = React.createClass({
 });
 
 var JogadoresList = React.createClass({
+  getInitialState: function() {
+    return {
+      search: ''
+    };
+  },
+  componentWillMount: function() {
+    document.getElementById('jogadoresSearch').addEventListener('change', this.search);
+  },
+  componentWillUnmount: function() {
+    document.getElementById('jogadoresSearch').removeEventListener('change', this.search);
+  },
+  search: function(e) {
+    this.setState({
+      search: e.target.value.toLowerCase()
+    });
+  },
   render: function() {
     // Creates the players cards
-    var jg = this.props.jogadores.map(function(j){
+    var jg = this.props.jogadores.filter(searchFilter(this.state.search)).map(function(j){
       return <JogadorCard jogador={ j } />;
     });
 
@@ -184,11 +211,27 @@ var EquipeView = React.createClass({
 });
 
 var EquipesList = React.createClass({
+  getInitialState: function() {
+    return {
+      search: ''
+    };
+  },
+  componentWillMount: function() {
+    document.getElementById('equipeSearch').addEventListener('change', this.search);
+  },
+  componentWillUnmount: function() {
+    document.getElementById('equipeSearch').removeEventListener('change', this.search);
+  },
+  search: function(e) {
+    this.setState({
+      search: e.target.value.toLowerCase()
+    });
+  },
   render: function() {
     // Creates the teams views
     var jogadores = this.props.jogadores;
     var modalidade = this.props.modalidade;
-    var eq = this.props.equipes.map(function(e) {
+    var eq = this.props.equipes.filter(searchFilter(this.state.search)).map(function(e) {
       return <EquipeView equipe={ e } jogadores={ getJogadoresByEquipe(e.equipe, jogadores) } modalidade={ modalidade }/>;
     });
 
@@ -237,12 +280,23 @@ var ModalidadeView = React.createClass({
 
 var ModalidadesList = React.createClass({
   getInitialState: function() {
-
+    return {
+      search: ''
+    };
+  },
+  componentWillMount: function() {
+    document.getElementById('modalidadeSearch').addEventListener('change', this.search);
+  },
+  componentWillUnmount: function() {
+    document.getElementById('modalidadeSearch').removeEventListener('change', this.search);
+  },
+  search: function(e) {
+    this.setState({
+      search: e.target.value.toLowerCase()
+    });
   },
   render: function() {
-    document.getElementById('search').onchange(this.search);
-
-    var equipes = this.props.equipes;
+    var equipes = this.props.equipes.filter(searchFilter(this.state.search));
     var jogadores = this.props.jogadores;
     var modalidades = this.props.categorias.map(function(m) {
       var eq = getEquipesByCategoria(m, equipes);
